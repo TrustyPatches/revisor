@@ -5,7 +5,7 @@ metadata = {}
 questions = {}
 solutions = {}
 
-for filename in glob.glob("*.text"):
+for filename in glob.glob("*.md"):
     with open(filename, "r") as f:
         lines = f.readlines()
         isAnswer = False
