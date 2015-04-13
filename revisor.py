@@ -5,42 +5,81 @@ metadata = {}
 questions = {}
 solutions = {}
 
-for filename in glob.glob("*.md"):
-    with open(filename, "r") as f:
-        lines = f.readlines()
-        isAnswer = False
-        question = ""
-        previous_line = ""
-        questionCount = 0
-        next_line = ""
+def main():
+    for filename in glob.glob("*.md"):
+        with open(filename, "r") as f:
+            lines = f.readlines()
+            isAnswer = False
+            question = ""
+            previous_line = ""
+            questionCount = 0
+            next_line = ""
         
-        for i in range(0, len(lines)):
-            line = lines[i]
+            for i in range(0, len(lines)):
+                line = lines[i]
 
-            if (next_line.startswith("===")):
-                isAnswer = line.lower == "answer"
+                if (is_section_markdown(next_line)):
+                    isAnswer = line.lower == "answer"
             
-            elif (next_line.startswith("---")):
-                topic = line
-                questionCount = 0
+                elif (is_topic_markdown(next_line)):
+                    topic = line
+                    questionCount = 0
         
-            elif (re.match('^\d.', line)):
-                print question
-                print line
-                question = line
-                questionCount += 1
+                elif (is_question(line)):
+                    print question
+                    print line
+                    question = line
+                    questionCount += 1
     
-            elif (not re.match('(-|=)', line)):
-                print line
-                question += line
-            else:
-                print "DISCARDED?: " + line
+                elif (is_not_heading_markdown(line)):
+                    print line
+                    question += line
+                else:
+                    print "DISCARDED?: " + line
 
-def multiply(a, b):
-    return a * b
+def is_section_markdown(s):
+    return s.startswith("===")
 
-def test_numbers_3_4():
-    assert multiply(3,4) == 12 
-      
-def test_strings_a_3():
-    assert multiply('a',3) == 'aaa' 
+def is_topic_markdown(s):
+    return s.startswith("---")
+
+def is_question(s):
+    return re.match('^\d*\.', s)
+
+def is_not_heading_markdown(s):
+    return not re.match('-|=', s)
+
+
+if __name__ == '__main__':
+    main()
+
+
+########## Tests ##########
+
+
+def test_is_section_markdown_true():
+    assert is_section_markdown("===============") == True
+
+def test_is_section_markdown_false():
+    assert is_section_markdown("aaaaaaaaaaaaaaa") == False
+
+def test_is_topic_markdown_true():
+    assert is_topic_markdown("-----------------") == True
+
+def test_is_topic_markdown_false():
+    assert is_topic_markdown("aaaaaaaaaaaaaaaaa") == False
+
+def test_is_question_true():
+    assert bool(is_question("5. important question?")) == True
+
+def test_is_question_multi_true():
+    assert bool(is_question("34. important question?")) == True
+
+def test_is_question_false():
+    assert bool(is_question("x. not a question")) == False
+
+def test_is_not_heading_markdown_true():
+    assert is_not_heading_markdown("asdasd") == True
+
+def test_is_not_heading_markdown_false():
+    assert is_not_heading_markdown("=======") == False
