@@ -17,14 +17,6 @@ Dynamic Programming
 -------------------
 
 1. First dynamic programming question
-black and
-yellow
-black and
-yellow
-black and
-yellow
-black and 
-yellow
 
 2. Second dynamic programming question
 

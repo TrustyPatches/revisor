@@ -1,41 +1,77 @@
 import re
 import glob
 
-metadata = {}
+metadata = []
 questions = {}
 solutions = {}
 
+def do_nothing():
+    a = 2 * 2
+
 def main():
-    for filename in glob.glob("*.md"):
+    for filename in glob.glob("Q*.md"):
         with open(filename, "r") as f:
             lines = f.readlines()
-            isAnswer = False
+            is_answer = False
             question = ""
             previous_line = ""
-            questionCount = 0
+            question_count = 0
             next_line = ""
-        
-            for i in range(0, len(lines)):
+            whole = ""
+            topic = ""
+
+            i = 0
+            while (i < len(lines) - 1):
                 line = lines[i]
+                next_line = lines[i + 1]
 
                 if (is_section_markdown(next_line)):
-                    isAnswer = line.lower == "answer"
-            
+                    is_answer = (line.lower == "answer")
+                    i += 2
                 elif (is_topic_markdown(next_line)):
+                    if (not is_answer and topic): 
+                        metadata.append((filename, topic, question_count))
                     topic = line
-                    questionCount = 0
-        
-                elif (is_question(line)):
-                    print question
-                    print line
+                    question_count = 0
+                    i += 2
+                elif (bool(is_question(line)) and question):
+                    if (not is_answer):
+                        questions[(filename, topic, question_count)] = (question)
+                    else:
+                        solutions[(filename, topic, question_count)] = (question)
                     question = line
-                    questionCount += 1
-    
-                elif (is_not_heading_markdown(line)):
-                    print line
-                    question += line
+                    i += 1
                 else:
-                    print "DISCARDED?: " + line
+                    question += line
+                    i += 1
+            solutions[(filename, topic, question_count)] = (question)
+            
+            print metadata 
+            print questions
+            print solutions
+
+                #if (is_section_markdown(next_line)):
+                #    isAnswer = (line.lower == "answer")
+                #    i += 1
+            
+                #elif (is_topic_markdown(next_line)):
+                #    print "THAT'S IT"
+                #    topic = line
+                #    questionCount = 0
+                #    i += 1
+        
+                #elif (bool(is_question(line))):
+                #    print str(questionCount) + " " + question
+                #    question = line
+                #    questionCount += 1
+    
+                #elif (is_not_heading_markdown(line) and is_not_heading_markdown(next_line)):
+                #    question += line
+
+                #else:
+                #    print "DISCARDED?: " + line
+
+
 
 def is_section_markdown(s):
     return s.startswith("===")
