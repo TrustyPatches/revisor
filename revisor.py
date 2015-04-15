@@ -8,27 +8,22 @@ solutions = {}
 def main():
     for filename in glob.glob("Q*.md"):
         with open(filename, "r") as lines:
-            #lines = f.readlines()
-            is_answer = False
-            question = ""
-            previous_line = ""
-            question_count = 0
-            next_line = ""
-            whole = ""
             section = ""
             topic = ""
+            question = ""
+            question_count = 0
             section_match_pattern = r'(^#\s+)(\w+)(.*)'
             topic_match_pattern = r'(^##\s+)([\w+\s*]*)'
-            question_match_pattern = r'(^\d\.\s+)(.*)' 
+            # TODO question variables should be renamed b/c apply to answers too
+            question_match_pattern = r'(^\d\.\s+)(.*)'  
             
             for line in lines:
-                
-                start = 0
                 
                 # elif line is question, inc count, grab line
                 question_match = re.match(question_match_pattern, line)
                 while (question_match):
                     question = question_match.group(2) + "\n"
+                    question_count += 1
                     try:
                         line = next(lines)
                     except StopIteration:
@@ -44,7 +39,9 @@ def main():
                             line = ""
                     print question
                     question_match = re.match(question_match_pattern, line)
-
+                    if (not question_match and section.startswith("question")):
+                        metadata.append((filename, topic, question_count))
+                
                 # if line is heading 1, grab value 
                 section_match = re.match(section_match_pattern, line)
                 if (section_match):
@@ -55,8 +52,9 @@ def main():
                 topic_match = re.match(topic_match_pattern, line)
                 if (topic_match):
                     topic = topic_match.group(2).lower()
+                    question_count = 0
                     print topic
-                       
+                
 
 
             print
@@ -66,27 +64,6 @@ def main():
             print
             print solutions
             print
-
-                #if (is_section_markdown(next_line)):
-                #    isAnswer = (line.lower == "answer")
-                #    i += 1
-            
-                #elif (is_topic_markdown(next_line)):
-                #    print "THAT'S IT"
-                #    topic = line
-                #    questionCount = 0
-                #    i += 1
-        
-                #elif (bool(is_question(line))):
-                #    print str(questionCount) + " " + question
-                #    question = line
-                #    questionCount += 1
-    
-                #elif (is_not_heading_markdown(line) and is_not_heading_markdown(next_line)):
-                #    question += line
-
-                #else:
-                #    print "DISCARDED?: " + line
 
 
 
