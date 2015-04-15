@@ -5,50 +5,67 @@ metadata = []
 questions = {}
 solutions = {}
 
-def do_nothing():
-    a = 2 * 2
-
 def main():
     for filename in glob.glob("Q*.md"):
-        with open(filename, "r") as f:
-            lines = f.readlines()
+        with open(filename, "r") as lines:
+            #lines = f.readlines()
             is_answer = False
             question = ""
             previous_line = ""
             question_count = 0
             next_line = ""
             whole = ""
+            section = ""
             topic = ""
-
-            i = 0
-            while (i < len(lines) - 1):
-                line = lines[i]
-                next_line = lines[i + 1]
-
-                if (is_section_markdown(next_line)):
-                    is_answer = (line.lower == "answer")
-                    i += 2
-                elif (is_topic_markdown(next_line)):
-                    if (not is_answer and topic): 
-                        metadata.append((filename, topic, question_count))
-                    topic = line
-                    question_count = 0
-                    i += 2
-                elif (bool(is_question(line)) and question):
-                    if (not is_answer):
-                        questions[(filename, topic, question_count)] = (question)
-                    else:
-                        solutions[(filename, topic, question_count)] = (question)
-                    question = line
-                    i += 1
-                else:
-                    question += line
-                    i += 1
-            solutions[(filename, topic, question_count)] = (question)
+            section_match_pattern = r'(^#\s+)(\w+)\s*'
+            topic_match_pattern = r'(^##\s+)(\w+)\s*'
+            question_match_pattern = r'(^\d\.\s+)(.*)' 
             
-            print metadata 
+            for line in lines:
+                
+                start = 0
+                
+                # elif line is question, inc count, grab line
+                question_match = re.match(question_match_pattern, line)
+                while (question_match):
+                    question = question_match.group(2) + "\n"
+                    try:
+                        line = next(lines)
+                    except StopIteration:
+                        line = ""
+                    while (line and 
+                        not(re.match(question_match_pattern, line) or 
+                            re.match(topic_match_pattern, line) or
+                            re.match(section_match_pattern, line))):
+                        question += line
+                        try:
+                            line = next(lines)
+                        except StopIteration:
+                            line = ""
+                    print question
+                    question_match = re.match(question_match_pattern, line)
+
+                # if line is heading 1, grab value 
+                section_match = re.match(section_match_pattern, line)
+                if (section_match):
+                    section = section_match.group(2).lower()
+                    print section
+                
+                # elif line is heading 2, grab value
+                topic_match = re.match(topic_match_pattern, line)
+                if (topic_match):
+                    topic = topic_match.group(2).lower()
+                    print topic
+                       
+
+
+            print
+            print metadata
+            print
             print questions
+            print
             print solutions
+            print
 
                 #if (is_section_markdown(next_line)):
                 #    isAnswer = (line.lower == "answer")

@@ -1,8 +1,6 @@
-Questions
-=========
+# Questions
 
-Hash Tables
------------
+## Hash Tables
 
 1. First hash tables question 
 concatenated with this second line
@@ -13,8 +11,7 @@ and maybe a third?
 3. Third hash tables question
 
 
-Dynamic Programming
--------------------
+## Dynamic Programming
 
 1. First dynamic programming question
 
@@ -23,11 +20,9 @@ Dynamic Programming
 3. Third dynamic programming question
 
 
-Solutions
-==========
+# Solutions
 
-Hash Tables
------------
+## Hash Tables
 
 1. First hash tables answer 
 
@@ -35,8 +30,7 @@ Hash Tables
 
 3. Third hash tables answer
 
-Dynamic Programming
--------------------
+## Dynamic Programming
 
 1. First dynamic programming answer
 
