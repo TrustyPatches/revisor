@@ -20,7 +20,7 @@ and maybe a third?
 3. Third dynamic programming question
 
 
-# Solutions
+# Solutions #
 
 ## Hash Tables
 
@@ -30,7 +30,7 @@ and maybe a third?
 
 3. Third hash tables answer
 
-## Dynamic Programming
+## CS2821 Dynamic Programming 101 ##
 
 1. First dynamic programming answer
 

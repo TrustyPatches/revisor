@@ -17,8 +17,8 @@ def main():
             whole = ""
             section = ""
             topic = ""
-            section_match_pattern = r'(^#\s+)(\w+)\s*'
-            topic_match_pattern = r'(^##\s+)(\w+)\s*'
+            section_match_pattern = r'(^#\s+)(\w+)(.*)'
+            topic_match_pattern = r'(^##\s+)([\w+\s*]*)'
             question_match_pattern = r'(^\d\.\s+)(.*)' 
             
             for line in lines:
