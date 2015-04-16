@@ -2,41 +2,28 @@
 
 ## Questions ##
 
-### Hash Tables ###
+### Hash Tables and Hash Maps ###
 
-1. First hash tables question 
-concatenated with this second line
-and maybe a third?
+1. Give a definition of the Map abstract data type.
 
-2. Second hash tables question
+2. Give a description of a Hash table.
 
-3. Third hash tables question
+3. Give one advantage and one disadvantage of using a Hash table.
 
 
-### Dynamic Programming ###
+### Hash Tables: Internals ###
 
-1. First dynamic programming question
 
-2. Second dynamic programming question
-
-3. Third dynamic programming question
+      *     *     *     *     *
 
 
 ## Solutions ##
 
-### Hash Tables ###
+### Hash Tables and Hash Maps ###
 
 1. First hash tables answer 
 
-2. Second hash tables answer
 
-3. Third hash tables answer
 
-### Dynamic Programming ###
-
-1. First dynamic programming answer
-
-2. Second dynamic programming answer
-
-3. Third dynamic programming answer
+### Hash Tables: Internals ###
 
