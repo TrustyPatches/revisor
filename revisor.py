@@ -64,15 +64,20 @@ def main():
                     print topic
                 
 
+            printDictionaries()
 
-            print
-            print metadata
-            print
-            print questions
-            print
-            print solutions
-            print
 
+def printDictionaries():
+    print
+    print metadata
+    print
+    print questions
+    print
+    print solutions
+    print
+    for q in questions: print questions[q]
+    print
+    for a in solutions: print solutions[a]
 
 
 def is_section_markdown(s):
