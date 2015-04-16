@@ -1,6 +1,8 @@
-# Questions
+# Algorithms and Complexity #
 
-## Hash Tables
+## Questions ##
+
+### Hash Tables ###
 
 1. First hash tables question 
 concatenated with this second line
@@ -11,7 +13,7 @@ and maybe a third?
 3. Third hash tables question
 
 
-## Dynamic Programming
+### Dynamic Programming ###
 
 1. First dynamic programming question
 
@@ -20,9 +22,9 @@ and maybe a third?
 3. Third dynamic programming question
 
 
-# Solutions #
+## Solutions ##
 
-## Hash Tables
+### Hash Tables ###
 
 1. First hash tables answer 
 
@@ -30,7 +32,7 @@ and maybe a third?
 
 3. Third hash tables answer
 
-## CS2821 Dynamic Programming 101 ##
+### Dynamic Programming ###
 
 1. First dynamic programming answer
 
