@@ -38,6 +38,14 @@ def main():
                         except StopIteration:
                             line = ""
                     print question
+                    # if question, add to questions
+                    if (section.lower().startswith("question")):
+                        questions[(filename, topic, question_count)] = question
+    
+                    # if answer, add to solutions
+                    if (section.lower().startswith("solution")):
+                        solutions[(filename, topic, question_count)] = question
+
                     question_match = re.match(question_match_pattern, line)
                     if (not question_match and section.startswith("question")):
                         metadata.append((filename, topic, question_count))
