@@ -16,7 +16,7 @@ def main():
 
     print "\nPlease select a topic: "
 
-    response = int(raw_input())
+    response = int(raw_input()) - 1
     topic = temp_menu[response][0]
     key = temp_menu[response][1]
     print key
@@ -46,7 +46,7 @@ def displayTopics():
     
 
 def loadFiles():
-    for filename in glob.glob("Q*.md"):
+    for filename in glob.glob("*.md"):
         with open(filename, "r") as lines:
             section = ""
             topic = ""
