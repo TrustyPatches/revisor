@@ -21,7 +21,9 @@
 
 ### Hash Tables and Hash Maps ###
 
-1. First hash tables answer 
+1. 
+  - Every map specifies a key type and a value type
+  - A map stores values from 
 
 
 
