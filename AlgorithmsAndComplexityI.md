@@ -31,8 +31,15 @@
 
 8. Describe two different methods for handling collisions.
 
+### Heaps and Priority Queues ###
 
-      *     *     *     *     *
+1. Describe the purpose of a priority queue and give three basic operations it should support.
+
+2. Give an implementation of a priority queue without using heaps.
+
+3. Give three advantages to using a heap-based implementation for priority queues.
+
+    *     *     *     *     *
 
 
 ## Solutions ##
@@ -44,9 +51,24 @@
   - put(key, value)
   - find(value)
 
+2.
+
+3.
+
+4.
 
 
 ### Hash Tables: Internals ###
 
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+8.
 
+
+### Heaps and Priority Queues ###
 
