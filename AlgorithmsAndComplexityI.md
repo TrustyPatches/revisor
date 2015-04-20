@@ -4,11 +4,13 @@
 
 ### Hash Tables and Hash Maps ###
 
-1. Give a definition of the Map abstract data type.
+1. Give three basic operations needed by a map ADT.
 
-2. Give a description of a Hash table.
+2. Give a one sentence description of a Hash table.
 
-3. Give one advantage and one disadvantage of using a Hash table.
+3. Give one advantage and one disadvantage of Hash tables.
+
+4. 
 
 
 ### Hash Tables: Internals ###
