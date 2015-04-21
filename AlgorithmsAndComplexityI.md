@@ -2,6 +2,10 @@
 
 ## Questions ##
 
+### ADTs and Data Structures ###
+
+1. How would you distinguish between 
+
 ### Hash Tables and Hash Maps ###
 
 1. Give three basic operations needed by a map ADT.
@@ -38,6 +42,14 @@
 2. Give an implementation of a priority queue without using heaps.
 
 3. Give three advantages to using a heap-based implementation for priority queues.
+
+4. Give a description of the dual nature of a heap and the 'heap tree' property
+
+5. Describe how the logical heap tree is mapped into an array in memory
+
+6. Describe how the heap primitives 'sift up' and 'sift down' work.
+
+7. Give an overview of the heap operations 'min', 'insert', and 'deleteMin'
 
     *     *     *     *     *
 
