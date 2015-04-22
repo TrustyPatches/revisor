@@ -2,6 +2,47 @@
 
 ## Questions ##
 
+### Algorithm Analysis and Basic Sorting ###
+
+1. Give an implementation of a binary search and its running time.
+
+2. Give an implementation of a selection sort and its running time.
+
+3. Give an implementation of an insertion sort and its running time.
+
+4. Give an implementation of a merge sort and its running time.
+
+5. List some common time classes with examples of operations/algorithms in each.
+
+### Recursion and More Sorting ####
+
+1. Compare the advantages and disadvantages of recursive implementations as compared with iterative ones.
+
+2. Give a recursive implementation of merge sort.
+
+3. Give an iterative implementation of merge sort.
+
+### Quicksort ###
+
+1. Give pseudocode for quicksort. 
+
+2. Discuss the good, bad and average cases for quicksort.
+
+3. Describe the various strategies for implementing the quicksort partition function.
+
+4. Summarise the running times of selection, insertion, merge and quicksort.
+
+### Running Time Analysis ###
+
+1. Give definitions for big-oh, big-omega and big-theta.
+
+2. Provide some rules of growth that are true in running time analysis.
+
+3. You have a choice of running an algorithm ALG once on a list of 10 million integers or on ten different lists of 1 million integers each. Which is faster:
+  a) If ALG is a Binary Search?
+  b) If ALG is a Selection Search?
+  c) If ALG is a Linear Search?
+
 ### ADTs and Data Structures ###
 
 1. How would you distinguish between and ADT and a data structure?
