@@ -122,7 +122,7 @@ Write out and give the results of the following operations:
 
 1. How long does it *have* to take to sort n items?
 
-2. What is the lower bound of a comparison sorting algorithm? Give a rough proof.
+2. What is the lower bound of a comparison sorting algorithm? Give a rough proof. In what cases can we 'cheat' this lower bound?
 
 3. Draw out the decision tree for a three element list. Show the path it takes for ththe list [20, 30, 10]. How does this show us the largest running time? 
 
@@ -134,9 +134,41 @@ Write out and give the results of the following operations:
 
 7. Is the counting sort a stable sorting algorithm? What does that mean?
 
-8. 
+8. Describe the purpose and general implementation of radix sort.
+
+9. Give a proof of correctness for radix sort.
+
+### Text Algorithms: String Matching ###
+
+1. Describe the string matching problem and give an overview and code for a naive string matching algorithm.
+
+2. Give a worst case bound for the naive string matching algorithm.
+
+3. Give a simple way of speeding up a string matching algorithm over large samples of data, for example, over a DNA sequence.
+
+4. Give pseudocode for the Rabin-Karp algorithm. Why is this faster than the naive string matching algorithm?
+
+5. Give an extension to Rabin-Karp for searching for many patterns in a text.
 
     *     *     *     *     *
+
+### Dynamic Programming ###
+
+1. Give code for a recursive fibonacci function. Now give code for a fibonacci function using a dynamic programming approach. Why would the latter be preferred over the former?
+
+2. Describe the 'general scheme' of dynamic programming. 
+
+3. What is the knapsack problem?
+
+4. Give code for a recursive implementation solving the knapsack problem.
+
+5. What is 'brancing' in an algorithm and what are the issues associated with it? How can they be mitigated?
+
+6. Describe a dynamic programming approach to improve the performance of the implementation of the recursive knapsack solution.
+
+7. Describe the longest subsequence problem and give a rough recursive solution.
+
+8. Describe how a final solution to the longest subsequence problem can be found by 'composing' it out of the solutions of smaller subproblems.
 
 
 ## Solutions ##
