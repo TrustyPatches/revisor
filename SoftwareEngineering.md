@@ -214,6 +214,43 @@ strong  V
 
 ### Getting Code Right First ###
 
+1. Different frames can be used in sequence diagrams to portray different semantics:
+    * opt: for conditionals; guard shows conditional statement
+    * alt: shows mutually exclusive conditionals
+    * loop: loop fragments while guard is true
+    * par: parallel fragments execute in parallel
+    * region: external region within which only one thread can run
+
+2. Some design pattern types: Creational, structural, behavioural, architectural.
+
+3. Creational design patterns: Try to create objects in a manner suitable to the situation. Uncontrolled object creation can lead to design problems, inefficiencies or added complexity.
+
+4. Singleton: Restricts instantiation of a class to one object. 
+
+5. Structural design patterns: Identify simple ways to implement relationships between entities.
+
+6. Facade: Create a simplified interface to ease usage. Shields clients from complexity.
+
+7. Behavioural design patterns: Identify common communication patterns between objects. They increase flexability in carrying out these communications.
+
+8. Observer: Requests to observe an event raised by another object.
+
+9. Architectural design patterns: Forms the basis of the application architecture.
+
+10. MVC: Decouple model and view to reduce complexity.
+
+11. Other examples of design patterns:
+
+|-------------------------------------------------------|
+| Creational | Structural | Behavioural | Architectural |
+|-------------------------------------------------------|
+| Singleton  | Facade     | Observer    | MVC           |
+| Prototype  | Adapter    | Iterator    | MVVM          |
+| Abstract   | Composite  | Mediator    | MVW           |
+|   Factory  |            |             |               |
+|-------------------------------------------------------|
+
+
 ### Is My Code Good ###
 
 ### Software Engineering Methodologies ### 
