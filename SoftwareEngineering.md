@@ -3,8 +3,47 @@
 
 ## Questions ##
 
-
 ### Maintaining Code Quality  ###
+
+1. What are CASE tools used for?
+
+2. Give some examples of the kinds of CASE tools that might be used.
+
+3. What three key things do workbenches allow for?
+
+4. What is an IDE?
+
+5. Describe five essential Javadoc annotations.
+
+6. Sum up what a test is in ten words or less.
+
+7. Describe a typical TDD cycle.
+
+8. Give a couple of examples of why TDD is beneficial to a project.
+
+9. Define a test runner.
+
+10. Define a test suite.
+
+11. Define a test case.
+
+12. Define a unit test.
+
+13. Define a test fixture.
+
+14. Define an integration test.
+
+15. What are mock objects?
+
+16. How can you create a test fixture with JUnit?
+
+17. JUnit will automatically teardown a test fixture, but to ensure certain resources are closed correctly, what can you do?
+
+18. How can we mark a method as a test in JUnit?
+
+19. How can you make an assertion using the assertTrue method in JUnit?
+
+20. What are the benefits of having programming standards?
 
 ### Working As A Team ###
 
@@ -40,7 +79,7 @@
 
 6. A test is something we write once and run often.
 
-7. A typical TDD cycle will look like this:
+7. A typical TDD cycle (red, green, refactor) will look like this:
   1. (Re)write a test.
   2. Make sure the test fails to compile, else go to 1.
   3. Write production code.
