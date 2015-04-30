@@ -47,15 +47,107 @@
 
 ### Working As A Team ###
 
+1. What are the steps needed to carry out a synchronization merge?
+
+2. What are the steps needed to carry out a reintegrate merge?
+
+3. What is the high level process for creating a tag?
+
+4. Give an example of the kind of diagram used in UML to represent a class.
+
+5. What kind of relationships can be used between classes in a UML diagram? How can we draw them?
+
+6. Describe the dependency relationship.
+
+7. Describe the association relationship.
+
+8. Describe the aggregation relationship.
+
+9. Describe the composition relationship.
+
+10. Describe the inheritance relationship.
+
+11. How can we represent multiplicity in a UML diagram?
+
+12. What is meant by coupling?
+
+13. What is meant by cohesion?
+
+14. What is vertical slicing?
+
+15. What is horizontal slicing?
+
+16. What is a use case diagram for?
+
+17. What is an actor in a use case diagram?
+
+18. What is a use case in a use case diagram?
+
+19. What are the four kind of use case relationship that might appear in a use case diagram?
+
+20. Describe the association relationship.
+
+21. Describe the inclusion relationship.
+
+22. Describe the extends relationship.
+
+23. Describe the generatlisation relationship.
+
 ### Getting Code Right First ### 
+
+1. What are some different frames that can appear in a sequence diagram?
+
+2. What are some design pattern types?
+
+3. Describe creational design patterns.
+
+4. Give an example of a creational design pattern.
+
+5. Describe structural design patterns.
+
+6. Give an example of a structural design pattern.
+
+7. Describe behavioural design patterns.
+
+8. Give an example of a behavioural design pattern.
+
+9. Describe architectural design patterns.
+
+10. Give an example of an architectural design pattern.
+
+11. Give some other examples of design patterns.
 
 ### Is My Code Good ###
 
+1. What is testing used for?
+
+2. Define what validation means in a project?
+
+3. Define what verification means in a project?
+
+4. What is scaffolding code?
+
+5. Describe the testing taxonomy.
+
+6. What is fault injection?
+
+7. Define a direct measurement.
+
+8. Define an indirect measurement.
+
+9. How can you calculate cyclomatic complexity?
+
+
 ### Software Engineering Methodologies ###
+
+1. What are the distinct phases characteristic of the waterfall methodology?
+
+2. Draw a diagram depicting the project flow of a plan based development model.
+
+3. Draw a diagram depicting the project flow of an agile development model.
 
 
 ## Answers ##
-
 
 ### Maintaining Code Quality  ### 
 
