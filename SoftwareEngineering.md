@@ -253,4 +253,79 @@ strong  V
 
 ### Is My Code Good ###
 
+1. Testing is to cause failures in order to make faults visible so that they can be fixed and not delived in code that goes to customers.
+
+2. Validate: Are we building the right software?
+
+3. Verification: Are we building the software right?
+
+4. Scaffolding code simulates the function of code that doesn't exist yet and isn't intended to be shipped. It uses:
+    * Stubs: Modules that simulate components
+    * Drivers: Used to test a module and provide inputs and control
+    * Mock objects: Temporary substitutes for real objects. Must have same interface as real one.
+
+5. Testing taxonomy:
+
+|-------------|-------------------|--------------------|------------|------------|
+| Type        | Specification     | Scope              | Opacity    | Done By?   |
+|-------------|-------------------|--------------------|------------|------------|
+| Unit        | Low level design, | No more than       | White box  | Programmer |
+|             | Code structure    | one class          |            |            |
+|             |                   |                    |            |            |
+| Integration | Low level design, | Multiple classes   | White box, | Programmer |
+|             | High level design |                    | Black box  |            |
+|             |                   |                    |            |            |
+| Functional  | High level design | Whole product      | Black box  | Tester     |
+|             |                   |                    |            |            |
+|             |                   |                    |            |            |
+| System      | Requirements      | Whole product in   | Black box  | Tester     |
+|             | Analysis          | representative env |            |            |
+|             |                   |                    |            |            |
+| Acceptance  | Requirements      | Whole product in   | Black box  | Customer   |
+|             | Analyses          | customer env       |            |            |
+|             |                   |                    |            |            |
+| Beta        | Ad-hoc            | Whole product in   | Black box  | Customer   | 
+|             |                   | customer env       |            |            |
+|-------------|-------------------|--------------------|------------|------------|
+
+6. Fault injection: Introduce faults to test code paths, in particular error handling paths that might be infrequently executed.
+
+7. Direct measurement: Measuring an attribute without relying on any other.
+
+8. Indirect measurement: Measuring an attribute by measuring many different attributes,
+
+9. Calculating cyclomatic complexity:
+    * Draw a control flow graph
+    * CC = Edges - Vertices + 2
+    * Derive a basis set of independent paths
+    * Generate data to drive each path
+
+
 ### Software Engineering Methodologies ### 
+
+1. In the waterfall model there are separate distinct phases:
+  * Requirements analysis and definition
+  * System and software design
+  * Implementation and unit testing
+  * Integration and system testing
+  * Operation and maintenance
+
+2. Plan based development:
+  
+        /--------------\                                                 /------------\
+        |              |                                                 |            |
+        V              |                                                 V            |
+  /--------------------------\   /----------------------------\   /--------------------------\
+  | Requirements engineering |-->| Requirements specification |-->| Design of implementation | 
+  \--------------------------/   \----------------------------/   \--------------------------/
+              ^                                                                 |
+              |                                                                 |
+              \-----------------------------------------------------------------/
+
+3. Agile development:
+
+  
+  /----------------\         /------------------\
+  | Requirements   | ------> | Design and       |
+  |    engineering | <------ |   implementation |
+  \----------------/         \------------------/
