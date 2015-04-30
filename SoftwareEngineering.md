@@ -80,11 +80,11 @@
 6. A test is something we write once and run often.
 
 7. A typical TDD cycle (red, green, refactor) will look like this:
-  1. (Re)write a test.
-  2. Make sure the test fails to compile, else go to 1.
-  3. Write production code.
-  4. Run all tests until they succeed, else go to 3.
-  5. Refactor code, go to 1.
+  * (Re)write a test.
+  * Make sure the test fails to compile, else go to 1.
+  * Write production code.
+  * Run all tests until they succeed, else go to 3.
+  * Refactor code, go to 1.
 
 8. Some benefits of TDD include:
   * Allows us to define the purpose and functionality of a method before implementing it.
@@ -121,6 +121,96 @@
 
 
 ### Working As A Team ###
+
+1. To perform a sync merge: 
+  * Commit changes
+  * Merge changes from trunk to branch
+  * Commit merged changes to the branch
+
+2. To perform a reintegrate merge:
+  * Commit changes and checkout trunk
+  * Merge changes from branch into trunk
+  * Commit changes then delete trunk
+
+3. We make a release candidate branch when we are looking to create a release. Once it passes necessary QA, we create a tag by copying from the release candidate branch. These tags are read only.
+
+4. The diagram for a class in UML might look something like this example:
+    |---------------|
+    |    Student    | <-- Name
+    |---------------|
+    | name          | <-- Attributes
+    | age           |
+    |---------------|
+    | takeNotes()   | <-- Operations
+    | sleep()       |
+    | eat()         |
+    | sitExams()    |
+    | goToLibrary() |
+    |---------------|
+
+5. The following relationships can exist between classes:
+
+  weak  O               knows of >
+        | Dependency  - - - - - - -
+        |                 max >
+        | Association -------------
+        |                part of
+        | Aggregation -----------<> (hollow arrow head)
+        |                 is on
+        | Composition -----------<> (filled in arrow head)
+        |                 is a
+        | Inheritance ------------>
+strong  V
+
+6. Dependency relationship:
+  * Depends on other class
+  * All other relationships imply dependency
+
+7. Association relationship:
+  * While one class can be used without the other, it is unlikely
+  * Designed to work together, default relationship
+
+8. Aggregation relationship:
+  * One class will involve one or more instances of the other class
+  * Can be built and destroyed separately
+
+9. Composition relationship:
+  * Very closely coupled
+  * Destroying one will destroy contents
+
+10. Inheritence relationship:
+  * Most highly coupled
+  * One is just a specialised version of the other
+
+11. Can describe multiplicity like so:
+  * Exact number, eg. (5)
+  * Range of numbers, eg. (0..5)
+  * Can use * for an arbitrary number, eg. (0..*)
+
+12. The level of coupling describes the reliance of classes on each other. Highly coupled classes are bad and cannot be modified independently. They are hard to modify, hard to test and hard to reuse.
+
+13. The level of cohesion measures the design of individual classes. If the methods that serve a class are closely related, they have high cohesion. Low cohesion classes are hard to maintain, hard to test, hard to reuse and hard to understand.
+
+14. Vertical slicing: Finishing a whole path from input to output quickly so the entire program can be run as a whole, albeit with very limited (or faked) functionality. Allow the client to be involved early. Allows frequent, incremental functional builds and releases. 
+
+15. Horizontal slicing: Assemblies or even single classes are perfected to gradually build up a program from the core components. Most effort is spent on perfecting individual modules. Sometimes necessary for key central service components. Delays feedback and can lead to overengineering.
+
+16. A use case diagram is used to identify the primary elements and processes that from the system. The passing elements are termed as actors and the processes are called use cases. 
+
+17. An actor represents some kind of person, organisation or external system that plays a role in one or more interactions with the system. An actor is drawn as a stick figure.
+
+18. A use case describes a sequence of actions providing something of value to an actor. A use case is drawn as an ellipse.
+
+19. Four kinds of use case relationship: inclusion, extends, generalisation, association.
+
+20. Association relationship: Actors can be associated with a use case.
+
+21. Inclusion relationship: A base use case contains an inclusion use case.
+
+22. Extends relationship: An extends use case augments a base use case if an extension condition is satisfied.
+
+23. Generalisation relationship: From specialist actors to generalised actors indicates the specialised actor is consistent with the generalised actor, possible with additional information.
+
 
 ### Getting Code Right First ###
 
