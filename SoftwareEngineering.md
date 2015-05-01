@@ -3,7 +3,7 @@
 
 ## Questions ##
 
-### Maintaining Code Quality  ###
+### Maintaining Code Quality ###
 
 1. What are CASE tools used for?
 
@@ -147,9 +147,9 @@
 3. Draw a diagram depicting the project flow of an agile development model.
 
 
-## Answers ##
+## Solutions ##
 
-### Maintaining Code Quality  ### 
+### Maintaining Code Quality ### 
 
 1. CASE tools (Computer Aided Software Engineering) support the software design process activities such as requirements engineering, design, program development and testing.
 

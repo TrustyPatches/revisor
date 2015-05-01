@@ -39,6 +39,9 @@ def main():
 
 
 def displayTopics():
+    #print questions
+    print solutions
+
     print "\nLoaded topics:\n"
     for i in range(0, len(metadata)):
         temp_menu.append((metadata[i][0], metadata[i][1]))
@@ -57,7 +60,7 @@ def loadFiles():
             section_match_pattern = r'(^##\s+)(\w+)(.*)'
             subtopic_match_pattern = r'(^###\s+)([\w+\s*]*)'
             # TODO question variables should be renamed b/c apply to answers too
-            question_match_pattern = r'(^\d\.\s+)(.*)'  
+            question_match_pattern = r'(^\d*\.\s+)(.*)'  
             
             for line in lines:
                 
