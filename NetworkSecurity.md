@@ -50,4 +50,34 @@
     - This is known as a luring attack.
   To take into account this problem the ARPL (adjust requested privilege level) instruction can be used. This changes the RPL fields of all selectors to the CPL of the calling process.
 
+17. Attacks against applications aim to execute operations that violate the security of the system:
+    - Violation of confidentiality, integrity and availability
 
+18. Deployment vulnerabilities can be introduced by an incorrect/faulty deployment/configuration of the application. 
+
+19. Implementation vulnerabilities can be introduced because the application cannot correctly handle:
+    - Unexpected input
+    - Unexpectured errors/exceptions
+    - Unexpected interleaving of events
+
+20. Local attacks: If one has a previously established presence on the host, may be able to manipulate behaviour f an application through local interaction. Allow one to execute operations with privileges different from those held by the attackers. Easier to perform because attacker has a better understanding of the environment.
+
+21. Remote attacks:
+      - Allow one to manipulate the behaviour of an application through network-based interaction
+      - Allow one to execute operations with the privileges of the vulnerable application
+      - Are more difficult to perform but more powerful as they dont require prior access to the system
+
+22. Local attacks on Unix:
+      - Each process has a real UID/GID, and effective UID/GID and a saved UID/GID
+      - If the process has a SUID bit setm when a process executes the program the process effective UID is changed to the ones of the program file owner
+      - By using the saved UIDm a SUID process can securely switch between the ID of the user invoking the program and the ID of the user owning the executable
+
+23. 99% of local vulnerabilites in Unix exploit SUID-root programs to obtain root privilieges. 
+
+24. Four broad avenues of attack:
+    - Environment attack
+    - Input argument attack
+    - File access attacks (race condition/file descriptor)
+    - Overflow attacks (stack, heap)
+
+25. 
