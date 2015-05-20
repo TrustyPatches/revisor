@@ -4,7 +4,7 @@ import glob
 def main():
     print("It's all okay")
     sl = SheetLibrary()
-    print(sl.filenames)
+
 
 class SheetLibrary:
 
@@ -88,12 +88,44 @@ class Topic:
         self.title = self.grab_title(questions)
         self.qa_pairs = self.create_qa_pairs(questions, answers)
 
-    def grab_title(self, questions):
-        return ""
+    def grab_title(self, questions): 
+        topic_match_pattern = r'(^###\s+)([\w+\s*]*)'
+        for line in questions:
+            title_match = re.match(topic_match_pattern, line)
+            if (title_match):
+                return title_match.group(2).lower().rstrip('\n').rstrip(' ')
+        return "Untitled"
 
     def create_qa_pairs(self, questions, answers):
-        return None
+        # Divide questions and answers into arrays of strings containing 
+        # each question/answer
+        # Iterate through both, creating QA_Pairs and then spitting them out 
+        qa_questions = self.divide_qa(questions)
+        qa_answers = self.divide_qa(answers)
+        if (len(qa_questions) != len(qa_answers)):
+            # TODO This error message should be more verbose if possible
+            print("Error: Number of questions doesn't match number of answers.")
+            exit()
+        else: 
+            qa_count = len(qa_questions)
 
+        qa_pairs = []
+        for i in range(qa_count):
+            qa = QAPair(qa_questions[i], qa_answers[i])
+            qa_pairs.append(qa)
+        return qa_pairs
+
+    def divide_qa(self, group):
+        qa_match_pattern = r'(^\d*\.\s+)(.*)'
+        qa_group = []
+        qa = []
+        for line in group[1:]:
+            if (qa and re.match(qa_match_pattern, line)):
+                qa_group.append(qa)
+                qa = []
+            if (not re.match(r'(\s*\n\s*)', line)):
+                qa.append(line)
+        return qa_group
 
 class QAPair:
     def __init__(self, question, answer):
