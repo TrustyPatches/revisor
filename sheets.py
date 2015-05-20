@@ -5,7 +5,7 @@ def main():
     print("It's all okay")
     
 
-class SheetGenerator:
+class SheetCreator:
     def __init__(self):
         markdown_filenames = get_markdown_filenames()
 
