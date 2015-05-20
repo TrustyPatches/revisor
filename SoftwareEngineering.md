@@ -147,7 +147,7 @@
 3. Draw a diagram depicting the project flow of an agile development model.
 
 
-## Solutions ##
+## Answers  ##
 
 ### Maintaining Code Quality ### 
 
