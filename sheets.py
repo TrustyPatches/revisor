@@ -3,16 +3,21 @@ import glob
 
 def main():
     print("It's all okay")
-    
+    sc = SheetCreator()
+    print(sc.filenames)
 
 class SheetCreator:
-    def __init__(self):
-        markdown_filenames = get_markdown_filenames()
 
-    def get_markdown_filenames():
+    BLACKLIST = ["README.md"]
+
+    def __init__(self):
+        self.filenames = self.get_filenames()
+
+    def get_filenames(self):
         filenames = []
-        for filename in glob.glob("*.md")
-            filenames += filename
+        for filename in glob.glob("*.md"):
+            if (filename not in self.BLACKLIST):
+                filenames.append(filename)
         return filenames
 
 class Sheet:
