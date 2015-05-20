@@ -37,8 +37,6 @@ class SheetLibrary:
                         answers.append(line)
                     if (title == ""): 
                         title = self.grab_title(line)
-                print (questions)
-                print (answers)
             sheet = Sheet(title, questions, answers)
             sheets.append(sheet)
         return sheets
@@ -60,14 +58,22 @@ class Sheet:
         self.topics = self.create_topics(questions, answers)
         
     def create_topics(self, questions, answers):
-        topic = []
+        topics = []
         topics_questions = self.create_topics_raw(questions)
         topics_answers = self.create_topics_raw(answers)
-            
-        return None
+        if (len(topics_questions) != len(topics_answers)):
+            # TODO This error message should be more verbose if possible
+            print("Error: Number of questions doesn't match number of answers.")
+            exit()
+        else: 
+            topics_count = len(topics_questions)
+        for i in range(topics_count):
+            new_topic = Topic(topics_questions[i], topics_answers[i])
+            topics.append(new_topic)
+        return topics
 
     def create_topics_raw(self, section):
-        topic_match_pattern = r'(^##\s+)([\w+\s*]*)'
+        topic_match_pattern = r'(^###\s+)([\w+\s*]*)'
         topic = []
         topics_section = []
         for line in section:
@@ -78,9 +84,16 @@ class Sheet:
         return topics_section
 
 class Topic:
-    def __init__(self, title):
-        self.title = title
-        self.qa_pairs = []
+    def __init__(self, questions, answers):
+        self.title = self.grab_title(questions)
+        self.qa_pairs = self.create_qa_pairs(questions, answers)
+
+    def grab_title(self, questions):
+        return ""
+
+    def create_qa_pairs(self, questions, answers):
+        return None
+
 
 class QAPair:
     def __init__(self, question, answer):
