@@ -3,15 +3,16 @@ import glob
 
 def main():
     print("It's all okay")
-    sc = SheetCreator()
-    print(sc.filenames)
+    sl = SheetLibrary()
+    print(sl.filenames)
 
-class SheetCreator:
+class SheetLibrary:
 
     BLACKLIST = ["README.md"]
 
     def __init__(self):
         self.filenames = self.get_filenames()
+        self.sheets = self.create_sheets()
 
     def get_filenames(self):
         filenames = []
@@ -20,11 +21,23 @@ class SheetCreator:
                 filenames.append(filename)
         return filenames
 
+    def create_sheets(self):
+        sheets = []
+        for f in self.filenames:
+            sheet = Sheet(f)
+            sheets.append(sheet)
+        return sheets
+
 class Sheet:
-    def __init__(self, title):
-        self.title = title
-        self.topics = []
+    def __init__(self, filename):
+        self.title = filename
+        self.topics = self.create_topics(filename)
         
+    def create_topics(self, filename):
+        topics = []
+
+        return topics
+
 class Topic:
     def __init__(self, title):
         self.title = title
