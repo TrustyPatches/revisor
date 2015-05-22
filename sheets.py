@@ -25,14 +25,16 @@ def main():
     selected_topic = selected_sheet.topics[int(get_input()) - 1]
 
     for qa in selected_topic.qa_pairs:
-        print("".join(qa.question))
-        get_input("...") 
+        print("\n" + "".join(qa.question))
+        command = get_input("...") 
+        if (command == "q" or command == "Q"): exit(0)
 
     get_input("That's all the questions. Ready for the answers now..?\n")
 
     for qa in selected_topic.qa_pairs:
         print("".join(qa.answer))
-        get_input()
+        command = get_input()
+        if (command == "q" or command == "Q"): exit(0)
 
     print("")
 
@@ -135,7 +137,6 @@ class Sheet:
             if (not re.match(section_match_pattern, line) and
                 not re.match(r'(\s*\n+\s*)', line)):
                 topic.append(line)
-        print(topics_section)
         return topics_section
 
 class Topic:
