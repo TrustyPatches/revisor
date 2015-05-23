@@ -1,0 +1,11 @@
+# File paths to search for sheets in:
+sheetspath: [
+  .,
+  ../revisionsheets
+]
+blacklist: [
+  ./README.md
+#,./examplesheet.md
+]
+
+

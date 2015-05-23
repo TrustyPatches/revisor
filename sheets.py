@@ -1,5 +1,6 @@
 import re
 import sys
+import yaml
 import glob
 
 if sys.version_info[0] >= 3:
@@ -18,7 +19,9 @@ def main():
         print("     " + str(i + 1) + ". " + sl.get_sheet_titles()[i])
 
     selected_sheet = sl.sheets[int(get_input()) - 1]
-     
+    
+    print(selected_sheet.get_topics_titles())
+    
     for i in range(len(selected_sheet.get_topics_titles())):
         print("     " + str(i + 1) + ". " + selected_sheet.get_topics_titles()[i])
 
@@ -54,10 +57,17 @@ class SheetLibrary:
         self.sheets = self.create_sheets()
 
     def get_filenames(self):
+        config = yaml.load(open(".config.yml", 'r'))
+        pathnames = config["sheetspath"]
+        blacklistnames = config["blacklist"]
         filenames = []
-        for filename in glob.glob("*.md"):
-            if (filename not in self.BLACKLIST):
-                filenames.append(filename)
+        for path in pathnames:
+            directory = path + "/*.md"
+            print directory
+            for filename in glob.glob(directory):
+                print(filename)
+                if (filename not in blacklistnames):
+                    filenames.append(path + "/" + filename)
         return filenames
 
     def create_sheets(self):
@@ -137,6 +147,7 @@ class Sheet:
             if (not re.match(section_match_pattern, line) and
                 not re.match(r'(\s*\n+\s*)', line)):
                 topic.append(line)
+        topics_section.append(topic)
         return topics_section
 
 class Topic:
@@ -178,6 +189,7 @@ class Topic:
                 qa = []     
             if (not re.match(r'(\s*\n+\s*)', line)):
                 qa.append(line)
+        qa_group.append(qa)
         return qa_group
 
 class QAPair:
