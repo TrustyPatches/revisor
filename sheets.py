@@ -27,60 +27,67 @@ class ConsoleMenu:
     """Holds the logic for guiding a user through a console based session."""
     
     def enter_menu(self):
-        self.print_title()
         sl = SheetLibrary()
 
         while True:
+            self.print_title()
             print("Select an option:\n")
             print("\t1. Generate mock test [not implemented]")
             print("\t2. Browse sheets")
             self.print_alt_menu(0)
-            selection = get_input()[0]
-
-            if (selection in "Qq"): 
-                exit(0)
-            if (selection == '1'):
-                self.generate_test()
-            if (selection == '2'):
-                self.browse_sheets()
+            selection = get_input()
+            
+            if len(selection) > 0:
+                if (selection[0] in "Qq"): 
+                    exit(0)
+                if (selection == "1"):
+                    self.generate_test()
+                if (selection == "2"):
+                    self.browse_sheets(sl)
         
-    def browse_sheets(self):
-        sl = SheetLibrary()
+    def browse_sheets(self, sl):
 
-        print ("Please select a sheet number:\n")
-
-        for i in range(len(sl.get_sheet_titles())):
-            print("\t" + str(i + 1) + ". " + sl.get_sheet_titles()[i])
-
-        self.print_alt_menu(1)
-
-        selection = get_input()[0]
-        if (selection in "Qq"): exit(0)
-        if (selection in "Bb"): return
-        selected_sheet = sl.sheets[int(selection) - 1]
-
-        self.browse_topics(selected_sheet)
+        while True:
+            print ("Please select a sheet number:\n")
+    
+            for i in range(len(sl.get_sheet_titles())):
+                print("\t" + str(i + 1) + ". " + sl.get_sheet_titles()[i])
+    
+            self.print_alt_menu(1)
+    
+            selection = get_input()
+            if len(selection) > 0:
+                if (selection[0] in "Qq"): exit(0)
+                if (selection[0] in "Bb"): return
+                sheet_selection = int(selection) - 1
+                if (sheet_selection < len(sl.sheets) and sheet_selection >= 0):
+                    selected_sheet = sl.sheets[sheet_selection]
+                    self.browse_topics(selected_sheet)
 
     def browse_topics(self, selected_sheet):
-        print ("Please select a topic number:\n")
 
-        for i in range(len(selected_sheet.get_topics_titles())):
-            print("\t" + str(i + 1) + ". " + selected_sheet.get_topics_titles()[i])
+        while True:
+            print ("Please select a topic number:\n")
 
-        self.print_alt_menu(1)
+            for i in range(len(selected_sheet.get_topics_titles())):
+                print("\t" + str(i + 1) + ". " + selected_sheet.get_topics_titles()[i])
 
-        selection = get_input()[0]
-        if (selection in "Qq"): exit(0)
-        if (selection in "Bb"): return
-        selected_topic = selected_sheet.topics[int(selection) - 1]
-
-        self.cycle_topic_questions(selected_topic)
-
+            self.print_alt_menu(1)
+    
+            selection = get_input()
+            if len(selection) > 0:
+                if (selection[0] in "Qq"): exit(0)
+                if (selection[0] in "Bb"): return
+                topic_selection = int(selection) - 1
+                if (topic_selection < len(selected_sheet.topics) and topic_selection >= 0):
+                    selected_topic = selected_sheet.topics[topic_selection]         
+                    self.cycle_topic_questions(selected_topic)
+    
     def cycle_topic_questions(self, selected_topic):
         for qa in selected_topic.qa_pairs:
             print("\n" + "".join(qa.question))
             command = get_input("...")
-            if (command == "Q" or command == "q"): exit(0)
+            if (command == "Q" or command == "q"): return
         get_input("That's all the questions. Ready for the answers now..?\n")
         for qa in selected_topic.qa_pairs:
             print("".join(qa.answer))
@@ -94,35 +101,6 @@ class ConsoleMenu:
     def print_alt_menu(self, mode):
         if (mode == 0): print("\nq: Quit")
         if (mode == 1): print("\nq: Quit | b: Back")
-
-    def old_menu(self):
-        self.printTitle()
-        sl = SheetLibrary()
-   
-        print("Please select a sheet number:\n")
-    
-        for i in range(len(sl.get_sheet_titles())):
-            print("     " + str(i + 1) + ". " + sl.get_sheet_titles()[i])
-
-        selected_sheet = sl.sheets[int(get_input()) - 1]
-    
-        for i in range(len(selected_sheet.get_topics_titles())):
-            print("     " + str(i + 1) + ". " + selected_sheet.get_topics_titles()[i])
-
-        selected_topic = selected_sheet.topics[int(get_input()) - 1]
-
-        for qa in selected_topic.qa_pairs:
-            print("\n" + "".join(qa.question))
-            command = get_input("...") 
-            if (command == "q" or command == "Q"): exit(0)
-    
-        get_input("That's all the questions. Ready for the answers now..?\n")
-        for qa in selected_topic.qa_pairs:
-            print("".join(qa.answer))
-            command = get_input()
-            if (command == "q" or command == "Q"): exit(0)
-    
-        print("")
     
     def print_title(self):
         """Print some funky ASCII title graphics"""
