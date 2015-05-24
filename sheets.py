@@ -17,43 +17,123 @@ else:
 def main():
     """Entry point for the command-line program, start up menu system """
     print("It's all okay")
-    printTitle()
-    sl = SheetLibrary()
+
+    cm = ConsoleMenu()
+    cm.enter_menu()
+
+###################################### MENU ######################################
+
+class ConsoleMenu:
+    """Holds the logic for guiding a user through a console based session."""
+    
+    def enter_menu(self):
+        self.print_title()
+        sl = SheetLibrary()
+
+        while True:
+            print("Select an option:\n")
+            print("\t1. Generate mock test [not implemented]")
+            print("\t2. Browse sheets")
+            self.print_alt_menu(0)
+            selection = get_input()[0]
+
+            if (selection in "Qq"): 
+                exit(0)
+            if (selection == '1'):
+                self.generate_test()
+            if (selection == '2'):
+                self.browse_sheets()
+        
+    def browse_sheets(self):
+        sl = SheetLibrary()
+
+        print ("Please select a sheet number:\n")
+
+        for i in range(len(sl.get_sheet_titles())):
+            print("\t" + str(i + 1) + ". " + sl.get_sheet_titles()[i])
+
+        self.print_alt_menu(1)
+
+        selection = get_input()[0]
+        if (selection in "Qq"): exit(0)
+        if (selection in "Bb"): return
+        selected_sheet = sl.sheets[int(selection) - 1]
+
+        self.browse_topics(selected_sheet)
+
+    def browse_topics(self, selected_sheet):
+        print ("Please select a topic number:\n")
+
+        for i in range(len(selected_sheet.get_topics_titles())):
+            print("\t" + str(i + 1) + ". " + selected_sheet.get_topics_titles()[i])
+
+        self.print_alt_menu(1)
+
+        selection = get_input()[0]
+        if (selection in "Qq"): exit(0)
+        if (selection in "Bb"): return
+        selected_topic = selected_sheet.topics[int(selection) - 1]
+
+        self.cycle_topic_questions(selected_topic)
+
+    def cycle_topic_questions(self, selected_topic):
+        for qa in selected_topic.qa_pairs:
+            print("\n" + "".join(qa.question))
+            command = get_input("...")
+            if (command == "Q" or command == "q"): exit(0)
+        get_input("That's all the questions. Ready for the answers now..?\n")
+        for qa in selected_topic.qa_pairs:
+            print("".join(qa.answer))
+            command = get_input()
+            if (command == "Q" or command == "q"): exit(0)
+        print("")
+
+    def generate_test(self):
+        print("Not implemented")
+
+    def print_alt_menu(self, mode):
+        if (mode == 0): print("\nq: Quit")
+        if (mode == 1): print("\nq: Quit | b: Back")
+
+    def old_menu(self):
+        self.printTitle()
+        sl = SheetLibrary()
    
-    print("Please select a sheet number:\n")
+        print("Please select a sheet number:\n")
     
-    for i in range(len(sl.get_sheet_titles())):
-        print("     " + str(i + 1) + ". " + sl.get_sheet_titles()[i])
+        for i in range(len(sl.get_sheet_titles())):
+            print("     " + str(i + 1) + ". " + sl.get_sheet_titles()[i])
 
-    selected_sheet = sl.sheets[int(get_input()) - 1]
+        selected_sheet = sl.sheets[int(get_input()) - 1]
     
-    for i in range(len(selected_sheet.get_topics_titles())):
-        print("     " + str(i + 1) + ". " + selected_sheet.get_topics_titles()[i])
+        for i in range(len(selected_sheet.get_topics_titles())):
+            print("     " + str(i + 1) + ". " + selected_sheet.get_topics_titles()[i])
 
-    selected_topic = selected_sheet.topics[int(get_input()) - 1]
+        selected_topic = selected_sheet.topics[int(get_input()) - 1]
 
-    for qa in selected_topic.qa_pairs:
-        print("\n" + "".join(qa.question))
-        command = get_input("...") 
-        if (command == "q" or command == "Q"): exit(0)
+        for qa in selected_topic.qa_pairs:
+            print("\n" + "".join(qa.question))
+            command = get_input("...") 
+            if (command == "q" or command == "Q"): exit(0)
+    
+        get_input("That's all the questions. Ready for the answers now..?\n")
+        for qa in selected_topic.qa_pairs:
+            print("".join(qa.answer))
+            command = get_input()
+            if (command == "q" or command == "Q"): exit(0)
+    
+        print("")
+    
+    def print_title(self):
+        """Print some funky ASCII title graphics"""
+        print("")
+        print("         /=================\\")
+        print("         |   S H E E T S   | ")
+        print("         \\=================/")
+        print("")
+    
 
-    get_input("That's all the questions. Ready for the answers now..?\n")
-    for qa in selected_topic.qa_pairs:
-        print("".join(qa.answer))
-        command = get_input()
-        if (command == "q" or command == "Q"): exit(0)
-
-    print("")
-
-def printTitle():
-    """Print some funky ASCII title graphics"""
-    print("")
-    print("         /=================\\")
-    print("         |   S H E E T S   | ")
-    print("         \\=================/")
-    print("")
-
-################################## SHEET LIBRARY ##################################
+################################## SHEET LIBRARY #################################
 
 class SheetLibrary:
     """Holds a collection of sheets generated from local markdown files"""
