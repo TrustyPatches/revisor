@@ -8,7 +8,14 @@ if sys.version_info[0] >= 3:
 else:
     get_input = raw_input
 
+
+###################################### MAIN ###################################### 
+
+#TODO Most of this should be refactored into another class specifically for 
+# displaying, constructing and looping the menu
+
 def main():
+    """Entry point for the command-line program, start up menu system """
     print("It's all okay")
     printTitle()
     sl = SheetLibrary()
@@ -19,8 +26,6 @@ def main():
         print("     " + str(i + 1) + ". " + sl.get_sheet_titles()[i])
 
     selected_sheet = sl.sheets[int(get_input()) - 1]
-    
-    print(selected_sheet.get_topics_titles())
     
     for i in range(len(selected_sheet.get_topics_titles())):
         print("     " + str(i + 1) + ". " + selected_sheet.get_topics_titles()[i])
@@ -33,7 +38,6 @@ def main():
         if (command == "q" or command == "Q"): exit(0)
 
     get_input("That's all the questions. Ready for the answers now..?\n")
-
     for qa in selected_topic.qa_pairs:
         print("".join(qa.answer))
         command = get_input()
@@ -42,16 +46,17 @@ def main():
     print("")
 
 def printTitle():
+    """Print some funky ASCII title graphics"""
     print("")
     print("         /=================\\")
     print("         |   S H E E T S   | ")
     print("         \\=================/")
     print("")
 
+################################## SHEET LIBRARY ##################################
+
 class SheetLibrary:
-
-    BLACKLIST = ["README.md"]
-
+    """Holds a collection of sheets generated from local markdown files"""
     def __init__(self):
         self.filenames = self.get_filenames()
         self.sheets = self.create_sheets()
@@ -63,9 +68,7 @@ class SheetLibrary:
         filenames = []
         for path in pathnames:
             directory = path + "/*.md"
-            print directory
             for filename in glob.glob(directory):
-                print(filename)
                 if (filename not in blacklistnames):
                     filenames.append(path + "/" + filename)
         return filenames
@@ -107,7 +110,10 @@ class SheetLibrary:
         return section_match.group(2).lower().rstrip('\n').rstrip(' ') if (section_match) else section
 
 
+###################################### SHEET ###################################### 
+
 class Sheet:
+    """Represents a single sheet of question and answers pairs, divided into topics"""
     def __init__(self, title, questions, answers):
         self.title = title
         self.topics = self.create_topics(questions, answers)
@@ -150,7 +156,10 @@ class Sheet:
         topics_section.append(topic)
         return topics_section
 
+###################################### TOPIC ##################################### 
+
 class Topic:
+    """Represents a single topic filled with related question answer pairs"""
     def __init__(self, questions, answers):
         self.title = self.grab_title(questions)
         self.qa_pairs = self.create_qa_pairs(questions, answers)
@@ -192,7 +201,10 @@ class Topic:
         qa_group.append(qa)
         return qa_group
 
+##################################### QA PAIR ####################################
+
 class QAPair:
+    """A single question answer pair containing all appropriate data"""
     def __init__(self, question, answer):
         self.question = question
         self.answer = answer
@@ -200,4 +212,5 @@ class QAPair:
 if __name__ == '__main__':
     main()
 
-### TESTS ###
+
+##################################### TESTS ######################################
